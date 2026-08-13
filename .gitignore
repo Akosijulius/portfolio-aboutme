@@ -10,3 +10,6 @@ Desktop.ini
 .vscode/
 .idea/
 *.swp
+
+# Personal / private assets (keep local only)
+assets/images/Julius Montillano_Dev.pdf
