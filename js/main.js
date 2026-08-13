@@ -50,6 +50,41 @@
     });
   }
 
+  /* ---------- Smooth anchor scrolling (fixed-nav offset) ---------- */
+  // Native `scroll-padding-top` on <html> already offsets for the fixed nav;
+  // we scroll the section *heading* into view (not the section top) so the
+  // heading lands just below the nav instead of below the section's large
+  // internal top padding.
+  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      var id = link.getAttribute('href');
+      if (!id || id.length < 2) return;
+      var target = document.getElementById(id.slice(1));
+      if (!target) return;
+
+      e.preventDefault();
+
+      if (target.id === 'home') {
+        window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+      } else {
+        // Reveal the section's content first so the reveal transition doesn't
+        // shift the layout mid-scroll and skew the landing position.
+        target.querySelectorAll('.reveal').forEach(function (el) {
+          el.style.transition = 'none';
+          el.classList.add('is-visible');
+          void el.offsetHeight;
+          el.style.transition = '';
+        });
+        var heading = target.querySelector('.section__head') || target;
+        heading.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+      }
+
+      if (window.history && history.replaceState) {
+        history.replaceState(null, '', id);
+      }
+    });
+  });
+
   /* ---------- Nav scroll state ---------- */
   function onScroll() {
     var scrolled = window.scrollY > 8;

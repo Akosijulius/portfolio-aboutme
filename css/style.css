@@ -430,7 +430,7 @@ ul {
   position: relative;
   display: inline-block;
   font-family: var(--font-display);
-  font-size: clamp(1.05rem, 2.6vw, 1.45rem);
+  font-size: clamp(1.05rem, 2.1vw, 1.15rem);
   font-weight: 600;
   color: var(--text);
   margin: 1.1rem 0 1.2rem;
@@ -703,16 +703,24 @@ ul {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 160px;
+  height: 180px;
   font-size: 2.6rem;
-  background: var(--thumb, linear-gradient(135deg, #1e3a8a, #3b82f6));
+  background: var(--thumb, linear-gradient(135deg, #0d1526, #16243f));
   position: relative;
+}
+.card__thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 1.5rem;
+  position: relative;
+  z-index: 1;
 }
 .card__thumb::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, transparent 55%, rgba(0, 0, 0, 0.45));
+  background: linear-gradient(180deg, transparent 55%, rgba(0, 0, 0, 0.4));
 }
 
 .card__body {
@@ -864,6 +872,12 @@ ul {
   margin-bottom: 0.4rem;
 }
 
+.cert__icon img {
+  width: auto;
+  height: 1.8rem;
+  object-fit: contain;
+}
+
 .cert__title {
   font-family: var(--font-display);
   font-size: 1.08rem;
@@ -886,6 +900,57 @@ ul {
 
 .cert .card__link {
   align-self: flex-start;
+}
+
+/* ---------- Education ---------- */
+.education__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  max-width: 760px;
+  margin-inline: auto;
+}
+
+.education__card {
+  padding: 1.6rem 1.7rem;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+.education__card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(96, 165, 250, 0.35);
+}
+
+.education__icon {
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+
+.education__body {
+  min-width: 0;
+}
+
+.education__period {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--accent-2);
+  margin-bottom: 0.35rem;
+}
+
+.education__degree {
+  font-family: var(--font-display);
+  font-size: 1.08rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.education__school {
+  color: var(--text-soft);
+  font-size: 0.9rem;
+  margin-top: 0.2rem;
 }
 
 /* ---------- Resume ---------- */
@@ -1064,20 +1129,14 @@ html.js .reveal.is-visible {
 }
 
 /* Stagger children in grids/cards */
-html.js .projects__grid .reveal:nth-child(2) { --d: 0.07s; }
-html.js .projects__grid .reveal:nth-child(3) { --d: 0.14s; }
-html.js .projects__grid .reveal:nth-child(4) { --d: 0.07s; }
-html.js .projects__grid .reveal:nth-child(5) { --d: 0.14s; }
+html.js .projects__grid .reveal:nth-child(1) { --d: 0s; }
 html.js .skills__grid .reveal:nth-child(2) { --d: 0.06s; }
 html.js .skills__grid .reveal:nth-child(3) { --d: 0.12s; }
 html.js .skills__grid .reveal:nth-child(4) { --d: 0.18s; }
 html.js .skills__grid .reveal:nth-child(5) { --d: 0.24s; }
+html.js .skills__grid .reveal:nth-child(6) { --d: 0.3s; }
+html.js .skills__grid .reveal:nth-child(7) { --d: 0.36s; }
 html.js .certs__grid .reveal:nth-child(2) { --d: 0.07s; }
-html.js .certs__grid .reveal:nth-child(3) { --d: 0.14s; }
-html.js .certs__grid .reveal:nth-child(4) { --d: 0.21s; }
-html.js .certs__grid .reveal:nth-child(5) { --d: 0.07s; }
-html.js .certs__grid .reveal:nth-child(6) { --d: 0.14s; }
-html.js .certs__grid .reveal:nth-child(7) { --d: 0.21s; }
 html.js .contact__grid .reveal:nth-child(2) { --d: 0.08s; }
 html.js .contact__grid .reveal:nth-child(3) { --d: 0.16s; }
 
